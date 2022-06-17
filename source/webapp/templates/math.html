@@ -1,0 +1,57 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="{%  static "css/style.css" %}">
+</head>
+<body>
+<form action=" " method="post">
+    {% csrf_token %}
+    <label>First integer:</label><br/>
+    <input type="number" name="x"/><br/>
+    <label>Second integer:</label><br/>
+    <input type="number" name="y"/><br/>
+    <br/>
+    <div class="form-check">
+    <input class="form-check-input" type="radio" name="name" id="flexRadioDefault1" value="Add">
+    <label class="form-check-label" for="flexRadioDefault1">
+    Add
+    </label>
+    </div>
+    <div class="form-check">
+    <input class="form-check-input" type="radio" name="name" id="flexRadioDefault1" value="Subtract">
+    <label class="form-check-label" for="flexRadioDefault1">
+    Subtract
+    </label>
+    </div>
+    <div class="form-check">
+    <input class="form-check-input" type="radio" name="name" id="flexRadioDefault1" value="Multiply">
+    <label class="form-check-label" for="flexRadioDefault1">
+    Multiply
+    </label>
+    </div>
+    <div class="form-check">
+    <input class="form-check-input" type="radio" name="name" id="flexRadioDefault1" value="Divide">
+    <label class="form-check-label" for="flexRadioDefault1">
+    Divide
+    </label>
+    </div>
+    <br/>
+    <input type="submit" value="Calculate"/>
+
+</form>
+{% if value == 'Add' %}
+<p>Result: {{  x  }} + {{ y }} = {{ result }}</p>
+{% elif value == 'Subtract' %}
+    <p>Result: {{  x  }} - {{ y }} = {{ result }}</p>
+    {% elif value == 'Multiply' %}
+    <p>Result: {{  x  }} * {{ y }} = {{ result }}</p>
+    {% elif value == 'Divide' %}
+    <p>Result: {{  x  }} / {{ y }} = {{ result }}</p>
+{% endif %}
+</body>
+</html>
